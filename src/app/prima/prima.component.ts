@@ -1,4 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Prima} from "./prima";
 
 @Component({
   selector: 'app-prima',
@@ -7,26 +8,26 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 })
 export class PrimaComponent implements OnInit, OnDestroy {
 
-  name: string;
-  birthDate: Date;
-  photoSource: string;
+  prima: Prima;
 
   secondsSinceOpen: number = 0;
 
-  timerId: number;
+  private timerId: number;
 
   constructor() {
-    this.name = 'Майя Плисецкая';
-    this.birthDate = new Date(1925, 10, 25);
-    this.photoSource = 'assets/img/pliseckaya.jpg';
+    this.prima = new Prima(
+      'Майя Плисецкая',
+      new Date(1925, 10, 20),
+      'assets/img/pliseckaya.jpg'
+    );
   }
 
   ngOnInit() {
-    this.timerId = window.setInterval(() => this.secondsSinceOpen++, 1000);
+    this.timerId = setInterval(() => this.secondsSinceOpen++, 1000);
   }
 
   ngOnDestroy(): void {
-    window.clearInterval(this.timerId);
+    clearInterval(this.timerId);
   }
 
 }
