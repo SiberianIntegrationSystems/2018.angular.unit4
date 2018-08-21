@@ -1,3 +1,10 @@
 <p>
-  {{name}}
+  Имя: {{prima.name}}
 </p>
+<p>
+  Дата рождения: {{prima.birthDate|date:'d.M.yyyy'}}
+</p>
+<p>
+  Времени прошло с открытия страницы: {{secondsSinceOpen}} секунд
+</p>
+<img [src]="prima.photoSource" [alt]="prima.name">
