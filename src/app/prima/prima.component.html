@@ -7,4 +7,6 @@
 <p>
   Времени прошло с открытия страницы: {{secondsSinceOpen}} секунд
 </p>
+<button (click)="startInterval()" *ngIf="timerId == null">Старт</button>
+<button (click)="stopInterval()" *ngIf="timerId != null">Стоп</button>
 <img [src]="prima.photoSource" [alt]="prima.name">

@@ -12,7 +12,7 @@ export class PrimaComponent implements OnInit, OnDestroy {
 
   secondsSinceOpen: number = 0;
 
-  private timerId: number;
+  timerId: number;
 
   constructor() {
     this.prima = new Prima(
@@ -23,11 +23,19 @@ export class PrimaComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+  }
+
+  startInterval() {
     this.timerId = setInterval(() => this.secondsSinceOpen++, 1000);
   }
 
-  ngOnDestroy(): void {
+  stopInterval() {
     clearInterval(this.timerId);
+    this.timerId = null;
+  }
+
+  ngOnDestroy(): void {
+    this.stopInterval();
   }
 
 }
